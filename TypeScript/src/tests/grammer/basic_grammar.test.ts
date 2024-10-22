@@ -64,3 +64,33 @@ describe("||演算子と??演算子の違い", () => {
     });
   });
 });
+
+
+describe("単項演算子 -, +", () => {
+  test("-演算子は符号を逆転する", () => {
+    const num = 123;
+    const minus = -num;
+
+    expect(minus).toBe(-123)
+  })
+
+  test("+演算子は何もしない", () => {
+    const num = 123;
+    const plus = +num;
+
+    expect(plus).toBe(123)
+  })
+
+  test("+演算子はstringを数値に変換する", () => {
+    const num = "123";
+    const plus = +num;
+
+    expect(plus).toBe(123)
+    expect(typeof plus).toBe("number")
+
+    // info: toBeInstanceOfはプリミティブ型には使用できない
+    const plusNum = new Number(num);
+    expect(plusNum.toString).toBe(num)
+    expect(plusNum).toBeInstanceOf(Number); // そのまま渡すとエラー
+  })
+})
