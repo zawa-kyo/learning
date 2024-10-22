@@ -90,7 +90,7 @@ describe("単項演算子 -, +", () => {
 
     // info: toBeInstanceOfはプリミティブ型には使用できない
     const plusNum = new Number(num);
-    expect(plusNum.toString).toBe(num)
+    expect(plusNum.toString()).toBe(num)
     expect(plusNum).toBeInstanceOf(Number); // そのまま渡すとエラー
   })
 })
