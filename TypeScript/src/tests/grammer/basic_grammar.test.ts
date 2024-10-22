@@ -66,7 +66,7 @@ describe("||演算子と??演算子の違い", () => {
 });
 
 
-describe("単項演算子 -, +", () => {
+describe("単項演算子 -, +, void", () => {
   test("-演算子は符号を逆転する", () => {
     const num = 123;
     const minus = -num;
@@ -92,5 +92,21 @@ describe("単項演算子 -, +", () => {
     const plusNum = new Number(num);
     expect(plusNum.toString()).toBe(num)
     expect(plusNum).toBeInstanceOf(Number); // そのまま渡すとエラー
+  })
+
+  test("void演算子はundefinedを戻す", () => {
+    const num = 123;
+
+    expect(void num).toBeUndefined()
+  })
+
+  test("void演算子は式を評価してからundefinedを戻す", () => {
+    let num = 123;
+    const callMe = () => {
+      return num++;
+    }
+
+    expect(void callMe()).toBeUndefined()
+    expect(num).toBe(124)
   })
 })
