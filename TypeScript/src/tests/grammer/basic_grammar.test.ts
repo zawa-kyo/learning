@@ -109,3 +109,31 @@ describe("単項演算子 -, +, void", () => {
     expect(num).toBe(124);
   });
 });
+
+describe("インデックスシグネチャ", () => {
+  // インデックスシグネチャは [key: 型]: 型 で指定する
+  type PriceData = {
+    [key: string]: number;
+  };
+
+  test("任意の名前のプロパティが型をもつことを保証する", () => {
+    const data: PriceData = {
+      apple: 220,
+      coffee: 120,
+    };
+
+    // data.banana = "free" のようにnumber型以外ではエラー
+    data.chicken = 300;
+    expect(data.chicken).toBe(300);
+  });
+
+  test("インデックスシグネチャは型安全性を破壊できる", () => {
+    const obj: PriceData = { foo: 123 };
+    // obj.barはundefinedだが、number型変数に格納できる
+    const num: number = obj.bar;
+
+    // numberで宣言された型情報をundefinedに上書きしてしまっている
+    expect(num).toBeUndefined();
+    expect(typeof num).not.toBe("number");
+  });
+});
