@@ -65,48 +65,47 @@ describe("||演算子と??演算子の違い", () => {
   });
 });
 
-
 describe("単項演算子 -, +, void", () => {
   test("-演算子は符号を逆転する", () => {
     const num = 123;
     const minus = -num;
 
-    expect(minus).toBe(-123)
-  })
+    expect(minus).toBe(-123);
+  });
 
   test("+演算子は何もしない", () => {
     const num = 123;
     const plus = +num;
 
-    expect(plus).toBe(123)
-  })
+    expect(plus).toBe(123);
+  });
 
   test("+演算子はstringを数値に変換する", () => {
     const num = "123";
     const plus = +num;
 
-    expect(plus).toBe(123)
-    expect(typeof plus).toBe("number")
+    expect(plus).toBe(123);
+    expect(typeof plus).toBe("number");
 
     // info: toBeInstanceOfはプリミティブ型には使用できない
     const plusNum = new Number(num);
-    expect(plusNum.toString()).toBe(num)
+    expect(plusNum.toString()).toBe(num);
     expect(plusNum).toBeInstanceOf(Number); // そのまま渡すとエラー
-  })
+  });
 
   test("void演算子はundefinedを戻す", () => {
     const num = 123;
 
-    expect(void num).toBeUndefined()
-  })
+    expect(void num).toBeUndefined();
+  });
 
   test("void演算子は式を評価してからundefinedを戻す", () => {
     let num = 123;
     const callMe = () => {
       return num++;
-    }
+    };
 
-    expect(void callMe()).toBeUndefined()
-    expect(num).toBe(124)
-  })
-})
+    expect(void callMe()).toBeUndefined();
+    expect(num).toBe(124);
+  });
+});
