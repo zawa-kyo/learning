@@ -137,3 +137,51 @@ describe("インデックスシグネチャ", () => {
     expect(typeof num).not.toBe("number");
   });
 });
+
+describe("typeofキーワード", () => {
+  describe("typeof演算子", () => {
+    test("変数の型を文字列として取得する", () => {
+      const num: number = 0;
+      expect(typeof num).toBe("number");
+    });
+
+    test("ユニオン型の場合は実際に使用されている型を取得する", () => {
+      type ns = number | string;
+      const num: ns = 0;
+      expect(typeof num).toBe("number");
+
+      const str: ns = "abc";
+      expect(typeof str).toBe("string");
+    });
+  });
+
+  describe("typeof型", () => {
+    test("取り出した型情報を変数に当てはめる", () => {
+      // 型推論ではなくnumber型を宣言していることに注意
+      const num: number = 0;
+
+      // `typeof num`で一つの型情報を表す
+      type T = typeof num;
+      const foo: T = 123;
+
+      expect(foo).toBe(123);
+    });
+
+    test("const, letでは型推論が異なる：const", () => {
+      const constNum = 0; // constではリテラル型に型推論される
+      type constT = typeof constNum;
+      const constNewNum: constT = 0; // 0以外は代入できない
+
+      // constではリテラル型のため、constNewNumはリテラル `0` として型推論される
+      expect(constNewNum).toBe(0);
+    });
+
+    test("const, letでは型推論が異なる：let", () => {
+      let letNum = 0; // letではnumber型そのものが推論される
+      type letNumT = typeof letNum;
+      const foo: letNumT = 123; // あくまでnumber型
+
+      expect(typeof foo).toBe("number");
+    });
+  });
+});
