@@ -127,7 +127,7 @@ describe("インデックスシグネチャ", () => {
     expect(data.chicken).toBe(300);
   });
 
-  test("インデックスシグネチャは型安全性を破壊できる", () => {
+  test("インデックスシグネチャは型安全性を破壊できるため、利用は避ける", () => {
     const obj: PriceData = { foo: 123 };
     // obj.barはundefinedだが、number型変数に格納できる
     const num: number = obj.bar;
@@ -140,7 +140,7 @@ describe("インデックスシグネチャ", () => {
 
 describe("typeofキーワード", () => {
   describe("typeof演算子", () => {
-    test("変数の型を文字列として取得する", () => {
+    test("変数の型を文字列として取得する (ランタイム評価)", () => {
       const num: number = 0;
       expect(typeof num).toBe("number");
     });
@@ -156,7 +156,7 @@ describe("typeofキーワード", () => {
   });
 
   describe("typeof型", () => {
-    test("取り出した型情報を変数に当てはめる", () => {
+    test("取り出した型情報を変数に当てはめる (コンパイル時評価)", () => {
       // 型推論ではなくnumber型を宣言していることに注意
       const num: number = 0;
 
