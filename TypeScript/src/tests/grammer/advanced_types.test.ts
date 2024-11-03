@@ -227,3 +227,22 @@ describe("mapped types", () => {
     expect(numbers.strawberry).toEqual(Array(0));
   });
 });
+
+describe("conditional types", () => {
+  test("三項演算子的に型を判別して、後続の型を指定する", () => {
+    type RestArgs<M> = M extends "string"
+      ? [string, string]
+      : [number, number, number];
+
+    function func<M extends "string" | "number">(
+      mode: M,
+      ...args: RestArgs<M>
+    ) {
+      return `${mode} with args: ${args.join(", ")}`;
+    }
+
+    // ジェネリクスは型推論によって第一引数が指定される
+    expect(func("number", 1, 2, 3)).toBe("number with args: 1, 2, 3");
+    expect(func("string", "a", "b")).toBe("string with args: a, b");
+  });
+});
