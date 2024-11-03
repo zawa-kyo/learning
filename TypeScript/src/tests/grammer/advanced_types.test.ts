@@ -191,3 +191,39 @@ describe("型ガード", () => {
     expect(validHuman.age).toBe(30);
   });
 });
+
+describe("mapped types", () => {
+  type Fruits = "apple" | "orange" | "strawberry";
+
+  test("{ [P in K]: T } でイテラブル的に型を定義する", () => {
+    type FruitsNumbers = {
+      [P in Fruits]: number;
+    };
+
+    // Fruitsの各要素: number型として定義される
+    const numbers: FruitsNumbers = {
+      apple: 1,
+      orange: 2,
+      strawberry: 3,
+    };
+
+    expect(numbers.apple).toBe(1);
+  });
+
+  test("{ [P in K]: P[] } でPの配列要素を参照する", () => {
+    type FruitArrays = {
+      [P in Fruits]: P[];
+    };
+
+    // P: P[]の形で展開される
+    const numbers: FruitArrays = {
+      apple: ["apple", "apple"],
+      orange: ["orange", "orange", "orange"],
+      strawberry: [],
+    };
+
+    expect(numbers.apple).toEqual(Array(2).fill("apple"));
+    expect(numbers.orange).toEqual(Array(3).fill("orange"));
+    expect(numbers.strawberry).toEqual(Array(0));
+  });
+});
