@@ -15,5 +15,8 @@
   },
   "peerDependencies": {
     "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "inversify": "^6.1.4"
   }
 }

@@ -22,6 +22,10 @@
     "skipLibCheck": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+
+    /* Decorator */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }
