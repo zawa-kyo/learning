@@ -1,8 +1,9 @@
 import { container } from "./inversify.config";
 import { IUserService } from "./interfaces";
+import { TYPES } from "./const/types";
 
 async function main() {
-  const userService = container.get<IUserService>("IUserService");
+  const userService = container.get<IUserService>(TYPES.IUserService);
 
   const username = "admin";
   const password = "password";

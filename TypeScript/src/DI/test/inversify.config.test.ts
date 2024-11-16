@@ -1,24 +1,25 @@
 import "reflect-metadata";
 import { container } from "../inversify.config";
+import { TYPES } from "../const/types";
 import { IUserService, ILogger } from "../interfaces";
 import { UserService } from "../services/UserService";
 import { ConsoleLogger } from "../utils/ConsoleLogger";
 
 describe("DIコンテナ", () => {
   test("IUserServiceが正しく解決される", () => {
-    const userService = container.get<IUserService>("IUserService");
+    const userService = container.get<IUserService>(TYPES.IUserService);
     expect(userService).toBeDefined();
     expect(userService).toBeInstanceOf(UserService);
   });
 
   test("ILoggerが正しく解決される", () => {
-    const logger = container.get<ILogger>("ILogger");
+    const logger = container.get<ILogger>(TYPES.ILogger);
     expect(logger).toBeDefined();
     expect(logger).toBeInstanceOf(ConsoleLogger);
   });
 
   test("UserServiceのloginメソッドが正しく動作するべき", async () => {
-    const userService = container.get<IUserService>("IUserService");
+    const userService = container.get<IUserService>(TYPES.IUserService);
 
     /** ログイン可能なユーザー情報 */
     const userInfo = {

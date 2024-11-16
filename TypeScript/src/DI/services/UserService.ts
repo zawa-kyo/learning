@@ -1,5 +1,6 @@
 import { injectable, inject } from "inversify";
 import { IUserService, ILogger } from "../interfaces";
+import { TYPES } from "../const/types";
 
 /**
  * Implements the IUserService for user authentication.
@@ -8,11 +9,15 @@ import { IUserService, ILogger } from "../interfaces";
 export class UserService implements IUserService {
   private logger: ILogger;
 
+  static {
+    console.log(TYPES.ILogger);
+  }
+
   /**
    * Creates an instance of UserService.
    * @param logger - The logger used to record login attempts.
    */
-  constructor(@inject("ILogger") logger: ILogger) {
+  constructor(@inject(TYPES.ILogger) logger: ILogger) {
     this.logger = logger;
   }
 
