@@ -23,11 +23,10 @@ class MyApp extends StatelessWidget {
 
 class _SimpleRouteParser extends RouteInformationParser<RouteSettings> {
   @override
-  Future<RouteSettings> parseRouteInformation(
-      RouteInformation routeInformation) async {
-    final uri = Uri.parse(routeInformation.location ?? '');
+  Future<RouteSettings> parseRouteInformation(RouteInformation rt) async {
+    final uri = rt.uri;
     if (uri.pathSegments.isEmpty) {
-      return RouteSettings(name: '/');
+      return const RouteSettings(name: '/');
     } else if (uri.pathSegments.length == 2 &&
         uri.pathSegments.first == 'detail') {
       final id = int.tryParse(uri.pathSegments[1]);
@@ -35,16 +34,17 @@ class _SimpleRouteParser extends RouteInformationParser<RouteSettings> {
         return RouteSettings(name: '/detail', arguments: id);
       }
     }
-    return RouteSettings(name: '/404');
+    return const RouteSettings(name: '/404');
   }
 
   @override
   RouteInformation restoreRouteInformation(RouteSettings configuration) {
     if (configuration.name == '/') {
-      return RouteInformation(location: '/');
+      return RouteInformation(uri: Uri(path: '/'));
     } else if (configuration.name == '/detail') {
-      return RouteInformation(location: '/detail/${configuration.arguments}');
+      return RouteInformation(
+          uri: Uri(path: '/detail/${configuration.arguments}'));
     }
-    return RouteInformation(location: '/404');
+    return RouteInformation(uri: Uri(path: '/404'));
   }
 }

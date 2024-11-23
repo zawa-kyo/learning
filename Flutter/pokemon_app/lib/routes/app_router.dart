@@ -14,27 +14,21 @@ class AppRouter extends RouterDelegate<RouteSettings>
 
   @override
   Widget build(BuildContext context) {
-    Widget page;
-    if (currentConfiguration == null || currentConfiguration!.name == '/') {
-      page = const PokemonListView();
-    } else if (currentConfiguration!.name == '/detail') {
-      final id = currentConfiguration!.arguments as int;
-      page = PokemonDetailView(id: id);
-    } else {
-      page = const Scaffold(body: Center(child: Text('404')));
-    }
-
     return Navigator(
       key: navigatorKey,
       pages: [
         const MaterialPage(child: PokemonListView()),
-        if (currentConfiguration != null &&
-            currentConfiguration!.name == '/detail')
+        if (currentConfiguration?.name == '/detail')
           MaterialPage(
               child: PokemonDetailView(
                   id: currentConfiguration!.arguments as int)),
+        if (currentConfiguration?.name != '/' &&
+            currentConfiguration?.name != '/detail')
+          const MaterialPage(
+            child: Scaffold(body: Center(child: Text('404'))),
+          ),
       ],
-      onPopPage: (route, result) {
+      onPopPage: (BuildContext context, Route<dynamic> route, dynamic result) {
         if (!route.didPop(result)) {
           return false;
         }
