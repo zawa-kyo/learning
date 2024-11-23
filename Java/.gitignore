@@ -1,0 +1,30 @@
+# Ignore build outputs
+/build/
+/.gradle/
+
+# Temporary files
+*.class
+*.log
+*.tmp
+*.swp
+*~
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE-specific directories and files
+/.vscode/
+
+# Ignore Gradle wrapper jar file
+/gradle/wrapper/gradle-wrapper.jar
+
+# Ignore dependency caches
+/.mvn/
+/target/
+/lib/
+
+# Ignore packaged archive files
+*.jar
+*.war
+*.ear
