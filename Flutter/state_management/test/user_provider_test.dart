@@ -1,9 +1,10 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
-import 'package:state_management/providers/user_provider.dart';
 import 'package:mockito/mockito.dart';
+import 'package:state_management/providers/user_provider.dart';
+
 import 'user_provider_test.mocks.dart';
 
 @GenerateMocks([http.Client])
