@@ -8,7 +8,7 @@ class UserRepository {
 
   UserRepository({required this.httpClient});
 
-  Future<User> fetchUser(String userId) async {
+  Future<User> fetchUser(int userId) async {
     final response = await httpClient.get(
       Uri.parse('https://api.example.com/users/$userId'),
     );

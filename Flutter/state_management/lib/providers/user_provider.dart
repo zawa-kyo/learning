@@ -12,7 +12,8 @@ final userRepositoryProvider = Provider<UserRepository>((ref) {
   return UserRepository(httpClient: client);
 });
 
-final userProvider = FutureProvider<User>((ref) async {
+// FutureProvider.familyから引数を受け取る
+final userProvider = FutureProvider.family<User, int>((ref, userId) async {
   final repository = ref.read(userRepositoryProvider);
-  return repository.fetchUser('123');
+  return repository.fetchUser(userId);
 });
