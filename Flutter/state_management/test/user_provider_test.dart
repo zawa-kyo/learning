@@ -1,31 +1,32 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:state_management/models/user.dart';
 import 'package:state_management/providers/user_provider.dart';
-import 'package:state_management/repositories/user_repository.dart';
+import 'package:mockito/mockito.dart';
+
+// FIXME: Exception has occurred:_TypeError (type 'Null' is not a subtype of type 'Future<Response>')
+class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
-  group('UserProvider Test', () {
-    test('fetchUser returns a User', () async {
-      final mockRepository = MockUserRepository();
-      final container = ProviderContainer(overrides: [
-        userRepositoryProvider.overrideWithValue(mockRepository),
-      ]);
+  test('fetchUser returns a User', () async {
+    final mockClient = MockHttpClient();
 
-      final userFuture = container.read(userProvider.future);
+    when(mockClient.get(
+      Uri.parse('https://api.example.com/users/123'),
+    )).thenAnswer(
+      (_) async =>
+          http.Response('{"id": "123", "name": "Alice", "age": 30}', 200),
+    );
 
-      final user = await userFuture;
-      expect(user.id, '123');
-      expect(user.name, 'Alice');
-      expect(user.age, 30);
-    });
+    final container = ProviderContainer(overrides: [
+      httpClientProvider.overrideWithValue(mockClient),
+    ]);
+
+    final user = await container.read(userProvider.future);
+
+    expect(user.id, '123');
+    expect(user.name, 'Alice');
+    expect(user.age, 30);
   });
-}
-
-class MockUserRepository extends UserRepository {
-  @override
-  Future<User> fetchUser() async {
-    return const User(id: '123', name: 'Alice', age: 30);
-  }
 }
