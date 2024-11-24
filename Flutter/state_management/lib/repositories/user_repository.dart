@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:http_status_code/http_status_code.dart';
 import 'package:state_management/models/user.dart';
 
 class UserRepository {
@@ -14,7 +15,7 @@ class UserRepository {
       Uri.parse('https://api.example.com/users/$userId'),
     );
 
-    if (response.statusCode != 200) {
+    if (response.statusCode != StatusCode.OK) {
       throw Exception('Failed to load user');
     }
 
