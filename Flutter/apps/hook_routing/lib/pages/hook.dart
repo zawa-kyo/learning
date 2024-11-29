@@ -8,19 +8,31 @@ class HookPage extends HookWidget {
   Widget build(BuildContext context) {
     final count = useState(0);
 
-    final button = ElevatedButton(
+    ElevatedButton getButton(int num) {
+      return ElevatedButton(
+        onPressed: () {
+          count.value = count.value + num;
+        },
+        child: Text(
+          '+$num',
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      );
+    }
+
+    final resetButton = ElevatedButton(
       onPressed: () {
-        count.value++;
+        count.value = 0;
       },
       child: Text(
-        '+1',
+        'リセット',
         style: Theme.of(context).textTheme.bodyLarge,
       ),
     );
 
     final text = Text(
       '現在のカウントは ${count.value} です',
-      style: Theme.of(context).textTheme.bodyLarge,
+      style: Theme.of(context).textTheme.displaySmall,
     );
 
     return Scaffold(
@@ -30,7 +42,18 @@ class HookPage extends HookWidget {
           children: [
             text,
             SizedBox(height: 20),
-            button,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                getButton(1),
+                SizedBox(width: 5),
+                getButton(2),
+                SizedBox(width: 5),
+                getButton(3),
+              ],
+            ),
+            SizedBox(height: 20),
+            resetButton,
           ],
         ),
       ),
