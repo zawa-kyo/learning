@@ -12,15 +12,24 @@ class HookPage extends HookWidget {
       onPressed: () {
         count.value++;
       },
-      child: Text('+1'),
+      child: Text(
+        '+1',
+        style: Theme.of(context).textTheme.bodyLarge,
+      ),
+    );
+
+    final text = Text(
+      '現在のカウントは ${count.value} です',
+      style: Theme.of(context).textTheme.bodyLarge,
     );
 
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('現在のカウントは${count.value}です'),
+            text,
+            SizedBox(height: 20),
             button,
           ],
         ),
