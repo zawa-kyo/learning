@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
+import 'package:hook_routing/Widgets/pop.dart';
 
 class CountUp extends HookWidget {
   const CountUp({super.key});
@@ -16,18 +16,6 @@ class CountUp extends HookWidget {
         },
         child: Text(
           '+$num',
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-      );
-    }
-
-    ElevatedButton getTransitionButton(void Function() callback) {
-      return ElevatedButton(
-        onPressed: () {
-          callback();
-        },
-        child: Text(
-          'Go to next page',
           style: Theme.of(context).textTheme.bodyLarge,
         ),
       );
@@ -68,9 +56,7 @@ class CountUp extends HookWidget {
             SizedBox(height: 20),
             resetButton,
             SizedBox(height: 40),
-            getTransitionButton(() {
-              GoRouter.of(context).go('/countDown');
-            }),
+            popWidget(),
           ],
         ),
       ),
