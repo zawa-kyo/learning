@@ -1,0 +1,14 @@
+name: hook_routing
+description: "A new Flutter project."
+version: 1.0.0+1
+
+publish_to: "none"
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_hooks: ^0.20.5
+  go_router: ^14.6.1
