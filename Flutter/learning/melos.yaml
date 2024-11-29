@@ -1,0 +1,40 @@
+name: learning
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  build:pokemon_app:
+    run: |
+      cd apps/pokemon_app
+      flutter pub run build_runner build --delete-conflicting-outputs
+
+  build:state_management:
+    run: |
+      cd apps/state_management
+      flutter pub run build_runner build --delete-conflicting-outputs
+
+  run:pokemon_app:
+    run: |
+      cd apps/pokemon_app
+      flutter run -d Android
+
+  run:state_management:
+    run: |
+      cd apps/state_management
+      flutter run -d chrome
+
+  clean_run:pokemon_app:
+    run: |
+      cd apps/pokemon_app
+      flutter pub run build_runner build --delete-conflicting-outputs
+      flutter run -d Android
+
+  clean_run:state_management:
+    run: |
+      cd apps/state_management
+      flutter pub run build_runner build --delete-conflicting-outputs
+      flutter run -d chrome
+
+  analyze: melos exec -- "dart analyze ."
