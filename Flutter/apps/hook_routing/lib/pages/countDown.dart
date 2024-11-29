@@ -1,33 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
 
-class CountUp extends HookWidget {
-  const CountUp({super.key});
+class CountDown extends HookWidget {
+  const CountDown({super.key});
 
   @override
   Widget build(BuildContext context) {
     final count = useState(0);
 
-    ElevatedButton getCalcButton(int num) {
+    ElevatedButton getButton(int num) {
       return ElevatedButton(
         onPressed: () {
           count.value = count.value + num;
         },
         child: Text(
-          '+$num',
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-      );
-    }
-
-    ElevatedButton getTransitionButton(void Function() callback) {
-      return ElevatedButton(
-        onPressed: () {
-          callback();
-        },
-        child: Text(
-          'Go to next page',
+          '$num',
           style: Theme.of(context).textTheme.bodyLarge,
         ),
       );
@@ -58,19 +45,15 @@ class CountUp extends HookWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                getCalcButton(1),
+                getButton(-1),
                 SizedBox(width: 5),
-                getCalcButton(2),
+                getButton(-2),
                 SizedBox(width: 5),
-                getCalcButton(3),
+                getButton(-3),
               ],
             ),
             SizedBox(height: 20),
             resetButton,
-            SizedBox(height: 40),
-            getTransitionButton(() {
-              GoRouter.of(context).go('/countDown');
-            }),
           ],
         ),
       ),

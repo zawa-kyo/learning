@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hook_routing/pages/countDown.dart';
 import 'package:hook_routing/pages/countUp.dart';
 
 void main() {
@@ -12,6 +13,10 @@ final _router = GoRouter(routes: [
   GoRoute(
     path: '/',
     builder: (context, state) => const MyApp(),
+  ),
+  GoRoute(
+    path: '/countDown',
+    builder: (context, state) => const CountDown(),
   )
 ]);
 
