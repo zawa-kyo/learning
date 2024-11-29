@@ -13,11 +13,13 @@ final _router = GoRouter(routes: [
   GoRoute(
     path: '/',
     builder: (context, state) => const MyApp(),
+    routes: [
+      GoRoute(
+        path: '/countDown',
+        builder: (context, state) => const CountDown(),
+      ),
+    ],
   ),
-  GoRoute(
-    path: '/countDown',
-    builder: (context, state) => const CountDown(),
-  )
 ]);
 
 class MyApp extends StatelessWidget {

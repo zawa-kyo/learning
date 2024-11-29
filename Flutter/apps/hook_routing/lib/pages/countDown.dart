@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hook_routing/Widgets/pop.dart';
 
 class CountDown extends HookWidget {
   const CountDown({super.key});
@@ -54,6 +55,8 @@ class CountDown extends HookWidget {
             ),
             SizedBox(height: 20),
             resetButton,
+            SizedBox(height: 40),
+            popWidget(),
           ],
         ),
       ),
