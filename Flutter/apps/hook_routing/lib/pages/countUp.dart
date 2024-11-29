@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class HookPage extends HookWidget {
-  const HookPage({super.key});
+class CountUp extends HookWidget {
+  const CountUp({super.key});
 
   @override
   Widget build(BuildContext context) {
