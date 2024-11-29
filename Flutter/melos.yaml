@@ -5,9 +5,9 @@ packages:
   - packages/**
 
 scripts:
-  build:pokemon_app:
+  build:pokemon:
     run: |
-      cd apps/pokemon_app
+      cd apps/pokemon
       flutter pub run build_runner build --delete-conflicting-outputs
 
   build:state_management:
@@ -15,9 +15,9 @@ scripts:
       cd apps/state_management
       flutter pub run build_runner build --delete-conflicting-outputs
 
-  run:pokemon_app:
+  run:pokemon:
     run: |
-      cd apps/pokemon_app
+      cd apps/pokemon
       flutter run -d Android
 
   run:state_management:
@@ -25,9 +25,14 @@ scripts:
       cd apps/state_management
       flutter run -d chrome
 
-  clean_run:pokemon_app:
+  run:hook_routing:
     run: |
-      cd apps/pokemon_app
+      cd apps/hook_routing
+      flutter run -d chrome
+
+  clean_run:pokemon:
+    run: |
+      cd apps/pokemon
       flutter pub run build_runner build --delete-conflicting-outputs
       flutter run -d Android
 
