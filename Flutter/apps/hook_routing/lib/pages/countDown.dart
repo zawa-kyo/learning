@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hook_routing/Widgets/pop.dart';
+import 'package:hook_routing/application/states/counterNotifier.dart';
 
-class CountDown extends HookWidget {
+class CountDown extends ConsumerWidget {
   const CountDown({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final count = useState(0);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final count = ref.watch(counterNotifierProvider);
+    final counterNotifier = ref.read(counterNotifierProvider.notifier);
 
     ElevatedButton getButton(int num) {
       return ElevatedButton(
         onPressed: () {
-          count.value = count.value + num;
+          counterNotifier.add(num);
         },
         child: Text(
           '$num',
@@ -23,7 +25,7 @@ class CountDown extends HookWidget {
 
     final resetButton = ElevatedButton(
       onPressed: () {
-        count.value = 0;
+        counterNotifier.reset();
       },
       child: Text(
         'リセット',
@@ -32,7 +34,7 @@ class CountDown extends HookWidget {
     );
 
     final text = Text(
-      '現在のカウントは ${count.value} です',
+      '現在のカウントは ${count} です',
       style: Theme.of(context).textTheme.displaySmall,
     );
 

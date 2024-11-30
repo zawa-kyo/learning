@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.20.5
   go_router: ^14.6.1
   flutter_riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
