@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hook_routing/pages/countDown.dart';
 import 'package:hook_routing/pages/countUp.dart';
@@ -6,7 +7,11 @@ import 'package:hook_routing/pages/top.dart';
 import 'package:hook_routing/presentation/router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ProviderScope(
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
