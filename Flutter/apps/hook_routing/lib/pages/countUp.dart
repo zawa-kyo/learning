@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hook_routing/Widgets/display_counter.dart';
-import 'package:hook_routing/Widgets/pop.dart';
 import 'package:hook_routing/application/states/counterNotifier.dart';
+import 'package:hook_routing/widgets/display_counter.dart';
+import 'package:hook_routing/widgets/pop.dart';
 import 'package:hook_routing/widgets/popAppbar.dart';
 
 class CountUp extends ConsumerWidget {
