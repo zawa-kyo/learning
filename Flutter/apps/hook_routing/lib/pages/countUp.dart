@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hook_routing/Widgets/pop.dart';
 import 'package:hook_routing/application/states/counterNotifier.dart';
+import 'package:hook_routing/widgets/popAppbar.dart';
 
 class CountUp extends ConsumerWidget {
   const CountUp({super.key});
@@ -39,6 +40,7 @@ class CountUp extends ConsumerWidget {
     );
 
     return Scaffold(
+      appBar: PopAppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
