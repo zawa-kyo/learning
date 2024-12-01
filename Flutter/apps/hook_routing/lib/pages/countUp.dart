@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hook_routing/Widgets/display_counter.dart';
 import 'package:hook_routing/Widgets/pop.dart';
 import 'package:hook_routing/application/states/counterNotifier.dart';
 import 'package:hook_routing/widgets/popAppbar.dart';
@@ -9,7 +10,6 @@ class CountUp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(counterNotifierProvider);
     final counterNotifier = ref.read(counterNotifierProvider.notifier);
 
     ElevatedButton getCalcButton(int num) {
@@ -34,18 +34,13 @@ class CountUp extends ConsumerWidget {
       ),
     );
 
-    final text = Text(
-      '現在のカウントは ${count} です',
-      style: Theme.of(context).textTheme.displaySmall,
-    );
-
     return Scaffold(
       appBar: PopAppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            text,
+            DisplayCounter(),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
