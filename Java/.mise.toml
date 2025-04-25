@@ -1,0 +1,11 @@
+[tools]
+gradle = "8.13.0"
+java = "openjdk-21.0.2"
+
+[tasks.hello]
+description = "Hello, World"
+run = "./gradlew run"
+
+[tasks.test]
+description = "Run tests"
+run = "./gradlew test --tests com.example.CalculatorTest"

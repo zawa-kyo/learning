@@ -1,4 +1,11 @@
-apply plugin: 'java'
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'com.example.Hello'
+}
 
 repositories {
     mavenCentral()
