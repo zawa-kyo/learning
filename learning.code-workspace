@@ -1,0 +1,32 @@
+{
+  "folders": [
+    {
+      "name": "Flutter",
+      "path": "Flutter"
+    },
+    {
+      "name": "Flutter@Hooks",
+      "path": "Flutter/apps/hook_routing/"
+    },
+    {
+      "name": "Flutter@Pokemon",
+      "path": "Flutter/apps/pokemon/"
+    },
+    {
+      "name": "Flutter@State",
+      "path": "Flutter/apps/state_management/"
+    },
+    {
+      "path": "Dart"
+    },
+    {
+      "path": "Java"
+    },
+    {
+      "path": "Rust"
+    },
+    {
+      "path": "TypeScript"
+    }
+  ]
+}
