@@ -1,0 +1,7 @@
+[tools]
+bun = "1.2.10"
+deno = "2.0.2"
+
+[tasks.hello]
+description = "Hello, World"
+run = "bun ./index.ts"
