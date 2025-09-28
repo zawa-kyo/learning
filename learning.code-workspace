@@ -27,6 +27,16 @@
     },
     {
       "path": "TypeScript"
+    },
+    {
+      "path": "Go"
+    },
+    {
+      "path": "Kotlin"
+    },
+    {
+      "name": "Python@uv",
+      "path": "Python/uv/"
     }
   ]
 }
